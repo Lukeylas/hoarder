@@ -13,16 +13,25 @@
                 <InputError :message="form.errors.message" class="mt-2" />
                 <PrimaryButton class="mt-4">Add Item</PrimaryButton>
             </form>
+
+            <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
+                <ListItem v-for="item in items" :key="item.id" :item="item"></ListItem>
+            </div>
         </div>
     </AuthenticatedLayout>
 </template>
 
 <script setup>
+    // Layout
     import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+    // Components
+    import ListItem from '@/Components/ListItem.vue';
     import InputError from '@/Components/InputError.vue';
     import PrimaryButton from '@/Components/PrimaryButton.vue';
     import { useForm, Head } from '@inertiajs/vue3';
     
+    defineProps(['items']);
+
     const form = useForm({
         name: '',
     });
