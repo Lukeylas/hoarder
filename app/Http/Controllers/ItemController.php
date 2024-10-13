@@ -16,7 +16,7 @@ class ItemController extends Controller
     public function index(): Response
     {
         return Inertia::render('Items/Index', [
-            //
+            'items' => Item::with('user:id,name')->latest()->get(),
         ]);
 
     }
