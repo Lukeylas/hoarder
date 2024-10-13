@@ -24,7 +24,7 @@ Route::get('/dashboard', function () {
     ->name('dashboard');
 
 Route::resource('items', ItemController::class)
-    ->only(['index', 'store'])
+    ->only(['index', 'store', 'update'])
     ->middleware(['auth', 'verified']);
 
 
